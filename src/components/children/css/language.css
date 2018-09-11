@@ -1,0 +1,46 @@
+.count{
+    float:right;
+  }
+  .languages-item{
+    float: left;
+    text-align: left;
+    font-size: 10px;
+    color: #586069;
+    width: 179px;
+    height: 18px;
+    padding: 4px 10px;
+    margin-bottom: 2px;
+  }
+  .languages-item:hover{
+    background-color: #eaecef;
+  }
+  .languages-list{
+    width: 199px;
+    height: 278px;
+    font-size: 0;
+  }
+  .languages-title{
+    width: 68px;
+    height: 21px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .languages-statistics{
+    width: 199px;
+    height: 309px;
+    padding: 16px;
+    border: 1px solid #e1e4e8;
+  }
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  li {
+    text-decoration:none;
+    display: inline-block;
+  }
+  a {
+    color: #42b983;
+    text-decoration: none;
+  }

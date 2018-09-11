@@ -1,0 +1,29 @@
+.Data-column{
+    float: left;
+    width: 233px;
+    height: 700px;
+    padding: 0px 8px;
+  }
+  .container-lg{
+    width: 996px;
+    height: 2300px;
+    padding: 0 8px;
+    margin: 24px 168.5px 0px 168.5px;
+  }
+  .projectMain{
+    display: block;
+    width: 1349px;
+    height: 2300px;
+  }
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  li {
+    text-decoration: none;
+    display: inline-block;
+  }
+  a {
+    color: #42b983;
+    text-decoration: none;
+  }
