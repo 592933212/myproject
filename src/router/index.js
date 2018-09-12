@@ -12,6 +12,9 @@ const routers = [
     component: Home
   },
   {
+    path: '/myproject'
+  },
+  {
     path: '/header',
     name: 'header',
     component: Header,
