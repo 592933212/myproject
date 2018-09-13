@@ -45,15 +45,12 @@ export default {
   components: {myfooter},
   computed: {
     mystar () {
-      console.log('this.$store.state.mystar: ', this.$store.state.mystar)
       return this.$store.state.mystar
     }
   },
   methods: {
     deletestar (index) {
-      console.log('index: ', index)
       this.$store.state.mystar.splice(index, 1)
-      console.log('this.$store.state.mystar[index]: ', this.$store.state.mystar[index])
     }
   }
 }

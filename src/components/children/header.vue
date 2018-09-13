@@ -58,7 +58,6 @@ export default {
       this.axios.get('https://api.github.com/search/repositories?q=' + this.search + '&order=desc&page=' + page)
         .then((res) => {
           var searchData = res.data.items.slice(0, 10)
-          console.log('res.data.items: ', res.data.items)
           this.$store.commit('searchresult', searchData)
           var repositories = res.data.total_count
           this.$store.commit('inputresults', this.search)

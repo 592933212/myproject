@@ -23,9 +23,7 @@ const store = new Vuex.Store({
       state.input = inp
     },
     mystarresults (state, mys) {
-      console.log('mys: ', mys)
       state.mystar.push(mys)
-      console.log('state.mystar: ', state.mystar)
     }
   }
 })

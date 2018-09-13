@@ -62,11 +62,9 @@ export default {
     handleCurrentChange (val) {
       page = Math.ceil(val / 3)
       this.search = this.$store.state.input
-      console.log('this.search: ', this.search)
       this.axios.get('https://api.github.com/search/repositories?q=' + this.search + '&order=desc&page=' + page)
         .then((res) => {
           newpage = val % 3
-          console.log('res.data.items: ', res.data.items)
           if (newpage === 1) {
             this.$store.commit('searchresult', res.data.items.slice(0, 10))
           } else if (newpage === 2) {
