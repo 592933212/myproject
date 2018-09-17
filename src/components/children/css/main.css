@@ -1,3 +1,12 @@
+.language-color{
+  float: left;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 5px;
+  position: relative;
+  top: 3px;
+}
 .mypagination{
     margin: 0px 120px;
   }

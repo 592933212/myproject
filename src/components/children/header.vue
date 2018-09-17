@@ -5,32 +5,52 @@
       <div class="flex-item-center"><a href="https://github.com/"><img src="./png/github-logo.png"></a></div>
         <div class="HeaderMenu">
           <div :class="{HeaderSearch:SearchNoChange,triggercontorl:SearchIsChange}">
-              <input type="text" class="formcontrol" :style="{ color }" v-model="search" @focus="searchInput()" @blur="recoveryInput()" @keyup.enter="searchData();recoveryInput()">
-              <img src="https://assets-cdn.github.com/images/search-shortcut-hint.svg" class="HeaderSearchImg" v-show="HeaderImgIsShow">
+            <input type="text" class="formcontrol" :style="{ color }" v-model="search" @focus="searchInput()" @blur="recoveryInput()" @keyup.enter="searchData();recoveryInput()">
+            <img src="https://assets-cdn.github.com/images/search-shortcut-hint.svg" class="HeaderSearchImg" v-show="HeaderImgIsShow">
           </div>
           <a class="search-innertext" v-show="SearchInnerText" @click="searchData()">
-              <img src="./png/Magnifier.png" class="magnifier">
-              <span class="search-copy">{{ search }}</span>
-              <div class="all-github">All Github</div>
+            <img src="./png/Magnifier.png" class="magnifier">
+            <span class="search-copy">{{ search }}</span>
+            <div class="all-github">All Github</div>
           </a>
           <ul class="HeaderFlexItem">
-              <li class="HeaderFlexLi"><router-link class="HeaderNavlink" :to="{ path: 'requests' }">Pull requests</router-link></li>
-              <li class="HeaderFlexLi"><router-link class="HeaderNavlink" :to="{ path: 'issues' }">Issues</router-link></li>
-              <li class="HeaderFlexLi"><router-link class="HeaderNavlink" :to="{ path: 'marketplace' }">Marketplace</router-link></li>
-              <li class="HeaderFlexLi"><router-link class="HeaderNavlink" :to="{ path: 'explore' }">Explore</router-link></li>
+            <li class="HeaderFlexLi"><router-link class="HeaderNavlink" :to="{ path: 'mystar' }">Mystar</router-link></li>
+            <li class="HeaderFlexLi"><router-link class="HeaderNavlink" :to="{ path: '/' }">Repository</router-link></li>
+            <li class="HeaderFlexLi"><router-link class="HeaderNavlink" :to="{ path: 'marketplace' }">Marketplace</router-link></li>
+            <li class="HeaderFlexLi"><router-link class="HeaderNavlink" :to="{ path: 'explore' }">Explore</router-link></li>
           </ul>
           <ul class="HeaderFlexLinks">
-              <li class="HeaderLinksli">
-              <a class="oction-bell" href="https://github.com/notifications"></a>
-              </li>
-              <li class="HeaderLinksli">
-              <div class="details-reset">
-                <div class="octionplus"></div>
-              </div>
-              </li>
-              <li class="HeaderLinksli">
+            <li class="HeaderLinksli">
+              <a class="el-icon-bell" href="https://github.com/notifications"></a>
+            </li>
+            <li class="HeaderLinksli">
+              <el-dropdown trigger="click">
+                <div class="details-reset">
+                  <div class="octionplus"></div>
+                </div>
+                <el-dropdown-menu slot="dropdown">
+                  <el-dropdown-item>New repositories</el-dropdown-item>
+                  <el-dropdown-item>Import repository</el-dropdown-item>
+                  <el-dropdown-item>New gist</el-dropdown-item>
+                  <el-dropdown-item>New organization</el-dropdown-item>
+                </el-dropdown-menu>
+              </el-dropdown>
+            </li>
+            <li class="HeaderLinksli">
+              <el-dropdown trigger="click">
                 <div class="details-overlay"></div>
-              </li>
+                <el-dropdown-menu slot="dropdown">
+                  <el-dropdown-item>Your profile</el-dropdown-item>
+                  <el-dropdown-item>Your repositories</el-dropdown-item>
+                  <el-dropdown-item>Your stars</el-dropdown-item>
+                  <el-dropdown-item>Your gists</el-dropdown-item>
+                  <i class="dropdown-divider"></i>
+                  <el-dropdown-item>Help</el-dropdown-item>
+                  <el-dropdown-item>Settings</el-dropdown-item>
+                  <el-dropdown-item>Sign out</el-dropdown-item>
+                </el-dropdown-menu>
+              </el-dropdown>
+            </li>
           </ul>
         </div>
       </div>
@@ -54,6 +74,7 @@ export default {
   },
   methods: {
     searchData () {
+      this.openFullScreen()
       this.$router.push({ path: '/' })
       this.axios.get('https://api.github.com/search/repositories?q=' + this.search + '&order=desc&page=' + page)
         .then((res) => {
@@ -75,6 +96,7 @@ export default {
           this.$store.commit('inputresults', this.search)
           this.$store.commit('repositoryresults', res.data.total_count)
           this.$store.commit('Paginationresult', res.data.total_count)
+          this.$store.state.searchStart = true
         })
         .catch((err) => {
           console.log('err: ', err)
@@ -95,9 +117,21 @@ export default {
         this.HeaderImgIsShow = true
         this.SearchInnerText = false
       }, 300)
+    },
+    openFullScreen () {
+      const loading = this.$loading({
+        lock: true,
+        text: '加载中...',
+        spinner: 'el-icon-loading',
+        background: 'rgba(0, 0, 0, 0.7)'
+      })
+      setTimeout(() => {
+        loading.close()
+      }, 2000)
     }
   },
-  mounted () {
+  created () {
+    this.openFullScreen()
     this.initialData()
   }
 }

@@ -5,6 +5,7 @@ const store = new Vuex.Store({
   state: {
     Repositories: '',
     searchData: '',
+    searchStart: false,
     Pagination: '',
     input: '',
     mystar: []

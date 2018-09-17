@@ -34,7 +34,9 @@ export default {
       this.$refs.parentsmenu.$refs.childrenmenu.innerText = rep
     }
   },
-  components: {myfooter, myheader, mymenu, mylanguage, mymain}
+  components: {
+    myfooter, myheader, mymenu, mylanguage, mymain
+  }
 }
 </script>
 

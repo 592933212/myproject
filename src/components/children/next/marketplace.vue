@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="toto">欢迎,来到marketplace!</div>
+    <div class="my-marketplace">欢迎,这里是marketplace!</div>
     <myfooter></myfooter>
   </div>
 </template>
@@ -13,9 +13,9 @@ export default {
 </script>
 
 <style>
-.toto{
+.my-marketplace{
   text-align: center;
   margin-top: 50px;
-  color: red;
+  color: #E6A23C;
 }
 </style>

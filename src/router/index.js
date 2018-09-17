@@ -1,6 +1,5 @@
 import Home from '@/components/children/home.vue'
-import Issues from '@/components/children/next/issues.vue'
-import Requests from '@/components/children/next/requests.vue'
+import Mystar from '@/components/children/next/Mystar.vue'
 import Header from '@/components/children/header.vue'
 import Explore from '@/components/children/next/explore.vue'
 import MarketPlace from '@/components/children/next/marketplace.vue'
@@ -20,14 +19,9 @@ const routers = [
     component: Header,
     children: [
       {
-        path: '/issues',
-        name: 'issues',
-        component: Issues
-      },
-      {
-        path: '/requests',
-        name: 'requests',
-        component: Requests
+        path: '/mystar',
+        name: 'mystar',
+        component: Mystar
       },
       {
         path: '/explore',

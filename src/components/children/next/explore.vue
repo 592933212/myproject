@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="toto">欢迎,来到explore!</div>
+    <div class="my-explore">欢迎,这里是explore!</div>
     <myfooter></myfooter>
   </div>
 </template>
@@ -13,9 +13,9 @@ export default {
 </script>
 
 <style>
-.toto{
+.my-explore{
   text-align: center;
   margin-top: 50px;
-  color: red;
+  color: #409EFF;
 }
 </style>
